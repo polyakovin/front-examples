@@ -15,7 +15,7 @@ body {
 }
 
 #bg {
-  background: url(imgs/_wallpaper.jpg);
+  background: url(./imgs/_wallpaper.jpg);
   background-size: cover;
   filter: blur(30px) brightness(0.8);
   position: absolute;
