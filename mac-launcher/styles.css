@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:100,400');
+
+:root {
+  --animation-duration: .3s;
+}
+
+* {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+}
+
+#bg {
+  background: url(imgs/_wallpaper.jpg);
+  background-size: cover;
+  filter: blur(30px) brightness(0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.2);
+  z-index: -1;
+}
+
+input {
+  width: 200px;
+  display: inline-block;
+  position: absolute;
+  top: -50px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
+  background: none;
+  border: 1px solid #ccc;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  transition: all var(--animation-duration);
+  font-weight: 400;
+  padding: 3px 10px;
+}
+
+input::placeholder {
+  color: #ccc;
+  font-weight: 100;
+}
+
+input:focus {
+  text-align: left;
+}
+
+.icon {
+  position: absolute;
+  width: 80px;
+  height: 75px;
+  text-align: center;
+  transition: all var(--animation-duration);
+}
+
+.icon img {
+  height: 100%;
+}
+
+.icon-folder {
+  border-radius: 15px;
+  background-color: #ccc;
+}
+
+.icon-in-folder {
+  position: absolute;
+  width: 19px;
+  height: 17px;
+  margin: 1px 2px;
+  text-align: center;
+  transition: all var(--animation-duration);
+}
+
+.icon-in-folder img {
+  height: 100%;
+}
+
+.icon-folder-active .icon-in-folder {
+  width: 80px;
+  height: 75px;
+}
+
+.icon-folder-active {
+  width: 80% !important;
+  left: 10% !important;
+  z-index: 2;
+}
+
+.icon:before,
+.icon:after,
+.icon-in-folder:after {
+  color: #fff;
+  content: attr(data-title);
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  transition: all var(--animation-duration);
+  text-shadow: 0 0 2px #333
+}
+
+.icon:before {
+  opacity: 0;
+  font-size: 2rem;
+  top: -50px;
+}
+
+.icon:after,
+.icon-folder-active .icon-in-folder:after {
+  font-size: 0.8rem;
+  bottom: -22px;
+}
+
+.icon-in-folder:after {
+  opacity: 0;
+  transform: scale(1.2);
+}
+
+#launcher.folder-opened input,
+#launcher.folder-opened .icon,
+#launcher.folder-opened .icon-folder-active:after {
+  opacity: 0;
+}
+
+#launcher.folder-opened .icon-folder-active,
+#launcher.folder-opened .icon-folder-active:before,
+#launcher.folder-opened .icon-folder-active .icon-in-folder:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#launcher.folder-opened .icon-folder-active {
+  border-radius: 30px;
+  /*padding: 50px;*/
+}
