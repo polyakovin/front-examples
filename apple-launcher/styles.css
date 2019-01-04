@@ -106,7 +106,7 @@ input:focus {
   right: 0;
   text-align: center;
   transition: all var(--animation-duration);
-  text-shadow: 0 0 4px #000;
+  text-shadow: 0px 1px 1px #777;
 }
 
 .icon:before {
