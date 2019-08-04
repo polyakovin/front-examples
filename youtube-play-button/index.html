@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>YouTube Play Button</title>
+  <style>
+    .icon {
+      width: 50px;
+      fill: white;
+      height: 50px;
+      padding: 30px;
+      border-radius: 50%;
+      background-color: black;
+      cursor: pointer;
+      margin: auto;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="icon">
+    <svg viewBox="0 0 10 10" class="play">
+      <polygon points="0,0 5,2.5 5,7.5 0,10">
+        <animate attributeName="points" begin="indefinite" dur=".2s"
+          from="0,0 3,0 3,10 0,10"
+            to="0,0 5,2.5 5,7.5 0,10"
+        />
+      </polygon>
+      <polygon points="5,2.5 10,5 10,5 5,7.5">
+        <animate attributeName="points" begin="indefinite" dur=".2s"
+          from="7,0 10,0 10,10 7,10"
+            to="5,2.5 10,5 10,5 5,7.5"
+        />
+      </polygon>
+    </svg>
+
+    <svg viewBox="0 0 10 10" class="pause hidden">
+      <polygon points="0,0 3,0 3,10 0,10">
+        <animate attributeName="points" begin="indefinite" dur=".2s"
+          from="0,0 5,2.6 5,7.5 0,10"
+            to="0,0 3,0 3,10 0,10"
+        />
+      </polygon>
+      <polygon points="7,0 10,0 10,10 7,10">
+        <animate attributeName="points" begin="indefinite" dur=".2s"
+          from="5,2.5 10,5 10,5 5,7.5"
+            to="7,0 10,0 10,10 7,10"
+        />
+      </polygon>
+    </svg>
+  </div>
+
+  <script>
+    const icon = document.querySelector('.icon');
+
+    const play = icon.querySelector('.play');
+    const playElements = play.getElementsByTagName("animate");
+
+    const pause = icon.querySelector('.pause');
+    const pauseElements = pause.getElementsByTagName("animate");
+
+    let activeIcon = 'pause';
+
+    icon.addEventListener('click', () => {
+      if (activeIcon === 'pause') {
+        activeIcon = 'play';
+
+        for (let i = 0; i < pauseElements.length; i++) {
+          pauseElements[i].beginElement();
+        }
+
+        pause.classList.remove('hidden');
+        play.classList.add('hidden');
+      } else {
+        activeIcon = 'pause';
+
+        for (let i = 0; i < playElements.length; i++) {
+          playElements[i].beginElement();
+        }
+
+        play.classList.remove('hidden');
+        pause.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
